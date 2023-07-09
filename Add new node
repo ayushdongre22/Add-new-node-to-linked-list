@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node{
+    int data;
+    Node* next;
+};
+Node* create(int n){
+    Node* head=new Node;
+    Node* s=head;
+    for(int i=0;i<n;i++){
+        if(i!=n-1){s->next=new Node; }
+        cin>>s->data;
+        if(i==n-1){s->next=NULL; break;}
+        s=s->next;
+    }
+    return head;
+}
+void print(Node *head){
+    Node* s=head;
+    while(s!=NULL){
+        cout<<s->data<<endl;
+        s=s->next;
+    }
+}
+void createn(Node* head,int d){
+    Node * s=head;
+    while(s->next!=NULL){
+        s=s->next;
+    }
+    Node* a=new Node;
+    a->data=d;
+    a->next=NULL;
+    s->next=a;
+} 
+int main(){
+    int n;
+    cin>>n;
+    Node* head=create(n);
+    print(head);
+    cout<<"After next number :"<<endl;
+    int d;
+    cin>>d;
+    createn(head,d);
+    print(head);
+    return 0;
+}
